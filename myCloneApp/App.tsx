@@ -30,6 +30,32 @@ const App = () => {
     </View>
   );
 };
+const InteractionIcons = () => {
+  return (
+    <View style={styles.iconsRow}>
+      <TouchableOpacity>
+        <Icon name="heart-o" size={24} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Icon name="comment-o" size={24} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Icon name="send-o" size={24} color="black" />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const AlertButton = () => {
+  const showAlert = () => Alert.alert("Alert Button pressed");
+  return (
+    <TouchableOpacity onPress={showAlert} style={styles.alertButton}>
+      <Text style={styles.alertButtonText}>Alert</Text>
+    </TouchableOpacity>
+  );
+};
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -67,4 +93,23 @@ const styles = StyleSheet.create({
   usernameText: {
     fontWeight: 'bold',
   },
+  const styles = StyleSheet.create({
+  iconsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  alertButton: {
+    backgroundColor: 'red',
+    margin: 10,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  alertButtonText: {
+    color: 'white',
+    fontSize: 16,
+  }
 });
+
+
