@@ -1,61 +1,81 @@
-import { StatusBar } from 'expo-status-bar';
-
-import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5'; 
 
 const App = () => {
+  const showAlert = () => Alert.alert("Alert Button pressed");
+
   return (
     <View style={styles.container}>
       <ScrollView>
         
         <View style={styles.headerContainer}>
-          <Text style={styles.profileName}>ootd_everyday</Text>
-          <Text style={styles.viaText}>via frenchie_fry39</Text>
+          <TouchableOpacity>
+            <Icon name="arrow-left" size={20} color="#000" />
+          </TouchableOpacity>
+          <View style={styles.headerTextContainer}>
+            <Image
+              source={{ uri: "https://via.placeholder.com/40" }}
+              style={styles.profileImage}
+            />
+            <Text style={styles.profileName}>ootd_everyday</Text>
+            <Text style={styles.viaText}>via frenchie_fry39</Text>
+          </View>
+          <TouchableOpacity>
+            <Icon name="ellipsis-v" size={20} color="#000" />
+          </TouchableOpacity>
         </View>
 
         
         <Image
-          source={{ uri: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2Fsunny-summer-background-with-clear-blue-sky-lush-green-meadow-tranquil-sunny-sunny-weather-field-summer-vibes-vibrant-sunny-day-nature-macro-blue-sky-peaceful-sunlight_1336356-632.jpg&tbnid=7WBfKWa_siVn0M&vet=10CAIQxiAoAGoXChMI8LqLlp-KiwMVAAAAAB0AAAAAEAY..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2Fsunny-summer-background-with-clear-blue-sky-lush-green-meadow-tranquil-sunny-sunny-weather-field-summer-vibes-vibrant-sunny-day-nature-macro-blue-sky-peaceful-sunlight_322353962.htm&docid=rn3usFBHjmyf5M&w=626&h=417&itg=1&q=sunnt%20day&ved=0CAIQxiAoAGoXChMI8LqLlp-KiwMVAAAAAB0AAAAAEAY" }} // Replace URI with actual image link
+          source={{
+            uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpwDHFmblnvAPvAZ2_fmZy2XdwTJ1vnDE0EmXthK_Xkvnskf42JCW90OwjRV1dxddXzfk&usqp=CAU/400X300",
+          }}
           style={styles.postImage}
         />
+
+        
+        <View style={styles.iconsRow}>
+          <TouchableOpacity>
+            <Icon name="heart" size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Icon name="comment" size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Icon name="paper-plane" size={24} color="black" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.saveIcon}>
+            <Icon name="bookmark" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
 
         
         <View style={styles.textContainer}>
           <Text style={styles.likesText}>Liked by paisley.print.48 and 7 others</Text>
           <Text style={styles.captionText}>
             <Text style={styles.usernameText}>frenchie_fry39 </Text>
-            Fresh shot on a sunny day! 
+            Fresh shot on a sunny day!
+          </Text>
+          <Text style={styles.commentText}>View all 12 comments</Text>
+          <Text style={styles.commentText}>
+            <Text style={styles.usernameText}>lil_wyatt838 </Text>
+            Awesome tones
+          </Text>
+          <Text style={styles.commentText}>
+            <Text style={styles.usernameText}>pia.in.a.pod </Text>
+            Gorg. Love it!
           </Text>
         </View>
+
+        
+        <TouchableOpacity onPress={showAlert} style={styles.alertButton}>
+          <Text style={styles.alertButtonText}>Alert</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
 };
-const InteractionIcons = () => {
-  return (
-    <View style={styles.iconsRow}>
-      <TouchableOpacity>
-        <Icon name="heart-o" size={24} color="black" />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Icon name="comment-o" size={24} color="black" />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Icon name="send-o" size={24} color="black" />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const AlertButton = () => {
-  const showAlert = () => Alert.alert("Alert Button pressed");
-  return (
-    <TouchableOpacity onPress={showAlert} style={styles.alertButton}>
-      <Text style={styles.alertButtonText}>Alert</Text>
-    </TouchableOpacity>
-  );
-};
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -69,6 +89,15 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#fff',
   },
+  headerTextContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
   profileName: {
     fontWeight: 'bold',
     fontSize: 16,
@@ -80,6 +109,14 @@ const styles = StyleSheet.create({
   postImage: {
     width: '100%',
     height: 400,
+  },
+  iconsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  saveIcon: {
+    marginLeft: 'auto',
   },
   textContainer: {
     padding: 10,
@@ -93,11 +130,9 @@ const styles = StyleSheet.create({
   usernameText: {
     fontWeight: 'bold',
   },
-  const styles = StyleSheet.create({
-  iconsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
+  commentText: {
+    marginTop: 5,
+    color: '#888',
   },
   alertButton: {
     backgroundColor: 'red',
@@ -109,7 +144,7 @@ const styles = StyleSheet.create({
   alertButtonText: {
     color: 'white',
     fontSize: 16,
-  }
+  },
 });
 
-
+export default App;
