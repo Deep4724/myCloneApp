@@ -1,4 +1,10 @@
 import { Image, StyleSheet, Platform } from 'react-native';
+import { Alert, Button } from 'react-native';
+
+<Button
+  title="Alert"
+  onPress={() => Alert.alert("Alert Button pressed")}
+/>
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
